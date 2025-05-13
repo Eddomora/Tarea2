@@ -13,8 +13,9 @@ public class Departamento {
     }
 
     public void agregarEmpleado(Empleado e) {
-        //if (e != null)
-        empleados.add(e);
+        if (e != null) {
+            empleados.add(e);
+        }
     }
     public int cantidadEmpleados(){
         return empleados.size();
