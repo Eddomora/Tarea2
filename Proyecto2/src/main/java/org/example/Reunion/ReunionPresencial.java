@@ -1,8 +1,7 @@
-package org.example;
+package org.example.Reunion;
+
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ReunionPresencial extends Reunion {

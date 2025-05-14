@@ -1,13 +1,15 @@
 package org.example;
 
+import org.example.Reunion.Reunion;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Departamento {
+public class Departamento implements Invitar{
     private String nombre;
     List<Empleado> empleados;
 
-    public Departamento() {
+    public Departamento(String nombre) {
         this.nombre = nombre;
         this.empleados = new ArrayList<>();
     }
@@ -23,5 +25,12 @@ public class Departamento {
 
     public List<Empleado> getEmpleados() {
         return new ArrayList<>(empleados);
+    }
+
+    @Override
+    public void invitar() {
+        for(Empleado e: empleados){
+            Reunion.listaInvitados.add(e);
+        }
     }
 }
