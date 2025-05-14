@@ -14,6 +14,8 @@ public abstract class Persona {
         this.correo = correo;
     }
 
+
+
     protected Persona() {
     }
 

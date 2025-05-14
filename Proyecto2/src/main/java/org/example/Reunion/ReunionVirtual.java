@@ -1,10 +1,10 @@
-package org.example;
+package org.example.Reunion;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
-public class ReunionVirtual extends Reunion{
+public class ReunionVirtual extends Reunion {
     private String enlace;
 
     public ReunionVirtual(Date fecha, Instant horaPre, Duration duracionPre, Instant horaIni, Instant horaFin, String enlace) {

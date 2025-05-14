@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Reunion;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -13,7 +13,8 @@ public abstract class Reunion {
     private Instant horaInicio;
     private Instant horaFinal;
 
-    private ArrayList listaInvitados; //No va acá pero la dejo como prototipo
+    public static ArrayList listaInvitados;
+    private ArrayList listaAsistentes;
 
 
     public Reunion(Date fecha, Instant horaPre, Duration duracionPre, Instant horaIni, Instant horaFin, String espacio){

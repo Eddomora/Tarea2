@@ -1,6 +1,8 @@
 package org.example;
 
-public class Empleado extends Persona {
+import org.example.Reunion.Reunion;
+
+public class Empleado extends Persona implements Invitar {
 
     private Departamento departamento;
 
@@ -11,4 +13,6 @@ public class Empleado extends Persona {
     public Departamento getDepartamento() {
         return departamento;
     }
+
+    public void invitar(){}
 }
