@@ -1,7 +1,10 @@
 package org.example.Reunion;
 
+import org.example.Persona;
+
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +24,14 @@ public abstract class Reunion {
         this.fecha = fecha;
         this.horaPrevista = horaPre;
         this.duracionPrevista = duracionPre;
-        this.horaInicio = horaIni;
-        this.horaFinal = horaFin;
+        this.horaInicio = horaIni; //creo que esta linea es redundante ya que se inicializa mas abajo
+        this.horaFinal = horaFin; //esta igual xd
+
+        this.listaAsistentes = new ArrayList<>();
+        this.listaInvitados = new ArrayList<>();
+    }
+    public void agregarInvitado(Persona p) {
+        listaInvitados.add(p); //agrega a un invitado a la lista (puede ser empleado o ext)
     }
 
     public List obtenerAsistencias(){return null;}
@@ -40,7 +49,11 @@ public abstract class Reunion {
         float t = d.toMinutes();
         return t;
     }
-    public void iniciar(){}
-    public void finalizar(){}
+    public void iniciar(){
+        this.horaInicio = Instant.now();
+    }
+    public void finalizar(){
+        this.horaFinal = Instant.now();
+    }
     }
 
