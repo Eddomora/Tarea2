@@ -20,12 +20,10 @@ public abstract class Reunion {
     private ArrayList listaAsistentes;
 
 
-    public Reunion(Date fecha, Instant horaPre, Duration duracionPre, Instant horaIni, Instant horaFin, String espacio){
+    public Reunion(Date fecha, Instant horaPre, Duration duracionPre, String espacio){
         this.fecha = fecha;
         this.horaPrevista = horaPre;
         this.duracionPrevista = duracionPre;
-        this.horaInicio = horaIni; //creo que esta linea es redundante ya que se inicializa mas abajo
-        this.horaFinal = horaFin; //esta igual xd
 
         this.listaAsistentes = new ArrayList<>();
         this.listaInvitados = new ArrayList<>();
@@ -53,7 +51,7 @@ public abstract class Reunion {
         this.horaInicio = Instant.now();
     }
     public void finalizar(){
-        this.horaFinal = Instant.now();
+        this.horaFinal = Instant.now(); //Aqui debe de registrarse las cosas en notas
     }
     }
 
