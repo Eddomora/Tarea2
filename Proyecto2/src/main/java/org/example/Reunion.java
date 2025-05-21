@@ -1,6 +1,4 @@
-package org.example.Reunion;
-
-import org.example.Persona;
+package org.example;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -53,5 +51,5 @@ public abstract class Reunion {
     public void finalizar(){
         this.horaFinal = Instant.now(); //Aqui debe de registrarse las cosas en notas
     }
-    }
+}
 
