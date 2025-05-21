@@ -1,7 +1,5 @@
 package org.example;
 
-import org.example.Reunion.Reunion;
-
 public class Empleado extends Persona implements Invitar {
 
     private Departamento departamento;
