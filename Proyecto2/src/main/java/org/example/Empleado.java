@@ -1,10 +1,7 @@
 package org.example;
 
- metodosReunion
 import org.example.Reunion;
 
-
- main
 public class Empleado extends Persona implements Invitar {
 
     private Departamento departamento;

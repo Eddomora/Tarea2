@@ -85,8 +85,9 @@ public abstract class Reunion {
     public void iniciar(){
         this.horaInicio = Instant.now();
     }
-    public void finalizar(){
-        this.horaFinal = Instant.now(); //Aqui debe de registrarse las cosas en notas
+    public void finalizar(String tipoReunion, String en){
+        this.horaFinal = Instant.now();
+
     }
 }
 
