@@ -7,10 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Nota {
-    private String contenido;
+    private String contenido = "";
 
     public void crearArchivo() {
-        Path file = Paths.get("texto.txt");
+        Path file = Paths.get("Resume.txt");
 
         try {
             Files.createFile(file);
@@ -23,6 +23,18 @@ public class Nota {
     }
 
     public void agregarContenido(String adicion) {
-        this.contenido += adicion;
+        this.contenido += adicion + "\n";
+    }
+
+    public void escribirEnArchivo() {
+        Path file = Paths.get("Resume.txt");
+
+        try {
+            Files.writeString(file, contenido);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Contenido escrito correctamente.");
+
     }
 }

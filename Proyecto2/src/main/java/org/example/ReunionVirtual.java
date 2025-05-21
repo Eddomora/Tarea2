@@ -18,8 +18,6 @@ public class ReunionVirtual extends Reunion {
     }
 
     public void finaliza(){
-        super.finalizar();
-        //super.calcularTiempoReal(); no se si esto se deba colocar aqui
-        //super.obtenerPorcentajeAsistencias(); esto igual
+        super.finalizar("Reunion Virtual",getEnlace());
     }
 }

@@ -18,7 +18,6 @@ public class ReunionPresencial extends Reunion {
     }
 
     public void finaliza(){
-        super.finalizar();
-        //super.calcularTiempoReal(); no se si esto se deba colocar aqui
+        super.finalizar("Reunion Presencial",getSala());
     }
 }
