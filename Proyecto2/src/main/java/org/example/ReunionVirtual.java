@@ -18,6 +18,6 @@ public class ReunionVirtual extends Reunion {
     }
 
     public void finaliza(){
-        super.finalizar("Reunion Virtual",getEnlace());
+        super.finalizar("Reunion Virtual"," el link" + getEnlace());
     }
 }

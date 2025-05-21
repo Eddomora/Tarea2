@@ -18,6 +18,6 @@ public class ReunionPresencial extends Reunion {
     }
 
     public void finaliza(){
-        super.finalizar("Reunion Presencial",getSala());
+        super.finalizar("Reunion Presencial"," la sala "+ getSala());
     }
 }

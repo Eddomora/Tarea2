@@ -77,16 +77,32 @@ public abstract class Reunion {
         float porcentaje = obtenerTotalAsistencias() / listaInvitados.size() * 100;
         return porcentaje;
     }
+
     public float calcularTiempoReal(){
         Duration d = Duration.between(horaInicio, horaFinal);
         float t = d.toMinutes();
         return t;
     }
+
     public void iniciar(){
         this.horaInicio = Instant.now();
     }
+
     public void finalizar(String tipoReunion, String en){
         this.horaFinal = Instant.now();
+        Nota note = new Nota();
+        note.crearArchivo();
+        note.agregarContenido(tipoReunion);
+        note.agregarContenido("Fecha de realizacion " + fecha + " en " + en );
+        note.agregarContenido("La reunion inicio a las " + horaInicio + " y finalizo a las " + horaFinal);
+        note.agregarContenido("La duracion de la reunion fue de " + calcularTiempoReal() + "minutos");
+        note.agregarContenido("Los detalles sobre la participacion a la reunion se desglosa de la siguiente manera.");
+        note.agregarContenido("    El porcentaje es de " + obtenerPorcentajeAsistencias() + "%");
+        note.agregarContenido("    La cantidad de asistentes es de " + obtenerTotalAsistencias());
+        note.agregarContenido("    Las personas que asistieron son: " + "TO STRING");// falta el to string a perosnas
+
+
+        note.escribirEnArchivo();
 
     }
 }
