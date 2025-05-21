@@ -10,7 +10,7 @@ public class Nota {
     private String contenido = "";
 
     public void crearArchivo() {
-        Path file = Paths.get("Resume.txt");
+        Path file = Paths.get("Acta.txt");
 
         try {
             Files.createFile(file);
@@ -27,7 +27,7 @@ public class Nota {
     }
 
     public void escribirEnArchivo() {
-        Path file = Paths.get("Resume.txt");
+        Path file = Paths.get("Acta.txt");
 
         try {
             Files.writeString(file, contenido);
