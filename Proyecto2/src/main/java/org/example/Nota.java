@@ -26,7 +26,7 @@ public class Nota {
         this.contenido += adicion + "\n";
     }
 
-    public void escribirEnArchivo() {
+    public void generarInforme() {
         Path file = Paths.get("Acta.txt");
 
         try {

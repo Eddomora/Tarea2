@@ -14,7 +14,7 @@ public class Main {
         d.agregarEmpleado(e);
 
         Calendar cal = Calendar.getInstance();
-        cal.set(2025, Calendar.MAY, 22); // Recuerda: MAY = 4
+        cal.set(2025, Calendar.MAY, 22); // Recuerda: MAY = 4 (entendi la referencia)
         Date fecha = cal.getTime();
 
         LocalDate fechaBase = LocalDate.of(2025, 5, 22);
@@ -24,8 +24,15 @@ public class Main {
 
         Duration duracion = Duration.ofHours(1).plusMinutes(30);
 
-        ReunionPresencial r = new ReunionPresencial(e2, tipoReunion.TECNICA, fecha, horaPresencial, duracion, "Auditorio CFM");
+        ReunionPresencial r = new ReunionPresencial(e2, TipoReunion.TECNICA, fecha, horaPresencial, duracion, "Auditorio CFM");
 
+        r.agregarInvitado(e);
+        r.agregarInvitado(e2);
         d.invitar(r);
+        r.registroAsistencia(e,EstadoAsistencia.PRESENTE,Instant.now());
+
+        r.iniciar();
+        r.registroAsistencia(e2,EstadoAsistencia.TARDE,Instant.now());
+        r.finaliza();
     }
 }

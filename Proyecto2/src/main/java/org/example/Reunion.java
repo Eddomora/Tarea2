@@ -2,14 +2,13 @@ package org.example;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Reunion {
     private Empleado organizador;
-    private tipoReunion tipoReu;
+    private TipoReunion tipoReu;
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
@@ -20,7 +19,7 @@ public abstract class Reunion {
     private List listaAsistentes;
 
 
-    public Reunion(Empleado organizador, tipoReunion tipoReu,Date fecha, Instant horaPrevista, Duration duracionPrevista){
+    public Reunion(Empleado organizador, TipoReunion tipoReu,Date fecha, Instant horaPrevista, Duration duracionPrevista){
         this.organizador = organizador;
         this.tipoReu = tipoReu;
         this.fecha = fecha;
@@ -57,13 +56,6 @@ public abstract class Reunion {
         }
         return presentes;
     }
-    //este tostring solo funciona para asistentes hay que revisarlo
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append(listaAsistentes);
-        return sb.toString();
-    }
 
     //para obtenerAusencias se usa la misma mecanica que en obtenerAsistencias.
     public List<Asistencia> obtenerAusencias(){
@@ -88,10 +80,24 @@ public abstract class Reunion {
         return atrasos;
     }
 
+    public String listaAString(List<Asistencia> list){
+        StringBuilder listado = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            listado.append(list.get(i));
+            if (i==list.size()-1){
+                listado.append(".");
+                break;
+            }
+            listado.append(", ");
+
+        }
+        return listado.toString();
+    }
+
+
     public int obtenerTotalAsistencias() {
-        return listaInvitados.toArray().length;
-        //Quiza aqui hay que trabajar con obtenerAsistencia porque queremos el Total de asistencias y listaInvitados ...
-    }   //...nos va a entregar el numero total de invitados, no de asistentes.
+        return obtenerAsistencias().size();
+    }
 
     public float obtenerPorcentajeAsistencias(){
         return (float) obtenerTotalAsistencias() / listaInvitados.size() * 100;
@@ -112,16 +118,20 @@ public abstract class Reunion {
         Nota note = new Nota();
         note.crearArchivo();
         note.agregarContenido(tipoReunion);
-        note.agregarContenido("Fecha de realizacion " + fecha + " en " + en );
+        note.agregarContenido("Organizada por " + organizador.getNombre()+ " " + organizador.getApellidos());
+        note.agregarContenido("Fecha de realizacion " + fecha + " en" + en );
+        note.agregarContenido("La reunion fue enfocada a "+ tipoReu);
         note.agregarContenido("La reunion inicio a las " + horaInicio + " y finalizo a las " + horaFinal);
-        note.agregarContenido("La duracion de la reunion fue de " + calcularTiempoReal() + "minutos");
+        note.agregarContenido("La duracion de la reunion fue de " + calcularTiempoReal() + " minutos");
         note.agregarContenido("Los detalles sobre la participacion a la reunion se desglosa de la siguiente manera.");
         note.agregarContenido("    El porcentaje es de " + obtenerPorcentajeAsistencias() + "%");
-        note.agregarContenido("    La cantidad de asistentes es de " + obtenerTotalAsistencias());
-        note.agregarContenido("    Las personas que asistieron son: " + obtenerAsistencias().toString());// falta el to string a perosnas
+        note.agregarContenido("    La cantidad de personas que asistieron es de " + obtenerTotalAsistencias());
+        note.agregarContenido("    Las personas que asistieron son: " + listaAString(obtenerAsistencias()));
+        note.agregarContenido("    Las personas que faltaron son: " +  listaAString(obtenerAusencias()));
+        note.agregarContenido("    Las personas que llegaron tarde son: " +  listaAString(obtenerRetrasos()));
 
 
-        note.escribirEnArchivo();
+        note.generarInforme();
 
     }
 }

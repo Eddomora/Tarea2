@@ -17,14 +17,13 @@ public class Departamento implements Invitar{
             empleados.add(e);
         }
     }
-    public int cantidadEmpleados(){
+    public int obtenerCantidadEmpleados(){
         return empleados.size();
     }
 
     public List<Empleado> getEmpleados() {
-        return new ArrayList<>(empleados);
+        return new ArrayList<Empleado>(empleados);
     }
-
 
 
 
