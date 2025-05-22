@@ -6,8 +6,9 @@ public class InvitadoExterno extends Persona implements Invitar {
         super(id, apellidos, nombre, correo);
     }
 
+
     @Override
-    public void invitar() {
+    public void invitar(Reunion r) {
 
     }
 }

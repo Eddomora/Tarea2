@@ -25,6 +25,10 @@ public class Asistencia {
     public Instant getHoraLlegada() {
         return horaLlegada;
     }
+
+    public void setEstado(EstadoAsistencia estado){
+        this.estado = estado;
+    }
 }
 //asi luego en la clase Reunion podemos registrar facilmente quienes llegaron tarde
 // o quienes no llegaron (ausentes).

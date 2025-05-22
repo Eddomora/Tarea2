@@ -26,6 +26,6 @@ public class Main {
 
         ReunionPresencial r = new ReunionPresencial(e2, tipoReunion.TECNICA, fecha, horaPresencial, duracion, "Auditorio CFM");
 
-        d.invitar();
+        d.invitar(r);
     }
 }
