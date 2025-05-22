@@ -27,7 +27,7 @@ public abstract class Reunion {
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
 
-        this.listaAsistentes = new ArrayList<>();
+        this.listaAsistentes = new ArrayList<Asistencia>();
         this.listaInvitados = new ArrayList<>();
     }
     public void agregarInvitado(Persona p) {
@@ -49,6 +49,14 @@ public abstract class Reunion {
         }
         return presentes;
     }
+    //este tostring solo funciona para asistentes hay que revisarlo
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(listaAsistentes);
+        return sb.toString();
+    }
+
     //para obtenerAusencias se usa la misma mecanica que en obtenerAsistencias.
     public List<Asistencia> obtenerAusencias(){
         List<Asistencia> ausentes = new ArrayList<>();
@@ -103,7 +111,7 @@ public abstract class Reunion {
         note.agregarContenido("Los detalles sobre la participacion a la reunion se desglosa de la siguiente manera.");
         note.agregarContenido("    El porcentaje es de " + obtenerPorcentajeAsistencias() + "%");
         note.agregarContenido("    La cantidad de asistentes es de " + obtenerTotalAsistencias());
-        note.agregarContenido("    Las personas que asistieron son: " + "TO STRING");// falta el to string a perosnas
+        note.agregarContenido("    Las personas que asistieron son: " + obtenerAsistencias().toString());// falta el to string a perosnas
 
 
         note.escribirEnArchivo();
