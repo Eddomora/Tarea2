@@ -31,7 +31,7 @@ class ReunionTest {
 
         Duration duracion = Duration.ofHours(1).plusMinutes(30);
 
-        ReunionPresencial r = new ReunionPresencial(e2, tipoReunion.TECNICA, fecha, horaPrevista, duracion, "Auditorio CFM");
+        ReunionPresencial r = new ReunionPresencial(e2, TipoReunion.MARKETING, fecha, horaPrevista, duracion, "Auditorio CFM");
 
         d.invitar(r);
     }

@@ -1,6 +1,6 @@
 package org.example;
 
-public enum tipoReunion {
+public enum TipoReunion {
     TECNICA,
     MARKETING,
     OTRO;
