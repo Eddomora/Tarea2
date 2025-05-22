@@ -7,8 +7,8 @@ import java.util.Date;
 public class ReunionVirtual extends Reunion {
     private String enlace;
 
-    public ReunionVirtual(Date fecha, Instant horaPre, Duration duracionPre, String enlace) {
-        super(fecha, horaPre, duracionPre, enlace);
+    public ReunionVirtual(Empleado organizador, tipoReunion tipoReu, Date fecha, Instant horaPrevista, Duration duracionPrevista, String enlace) {
+        super(organizador, tipoReu, fecha, horaPrevista, duracionPrevista);
         this.enlace = enlace;
         super.iniciar();
     }

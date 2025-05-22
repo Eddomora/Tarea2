@@ -14,5 +14,8 @@ public class Empleado extends Persona implements Invitar {
         return departamento;
     }
 
-    public void invitar(){}
+    @Override
+    public void invitar(Reunion r) {
+
+    }
 }

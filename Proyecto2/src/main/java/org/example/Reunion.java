@@ -8,26 +8,30 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class Reunion {
+    private Empleado organizador;
+    private tipoReunion tipoReu;
     private Date fecha;
     private Instant horaPrevista;
     private Duration duracionPrevista;
     private Instant horaInicio;
     private Instant horaFinal;
 
-    public static ArrayList listaInvitados;
-    private ArrayList listaAsistentes;
+    private List listaInvitados;
+    private List listaAsistentes;
 
 
-    public Reunion(Date fecha, Instant horaPre, Duration duracionPre, String espacio){
+    public Reunion(Empleado organizador, tipoReunion tipoReu,Date fecha, Instant horaPrevista, Duration duracionPrevista){
+        this.organizador = organizador;
+        this.tipoReu = tipoReu;
         this.fecha = fecha;
-        this.horaPrevista = horaPre;
-        this.duracionPrevista = duracionPre;
+        this.horaPrevista = horaPrevista;
+        this.duracionPrevista = duracionPrevista;
 
         this.listaAsistentes = new ArrayList<>();
         this.listaInvitados = new ArrayList<>();
     }
     public void agregarInvitado(Persona p) {
-        listaInvitados.add(p); //agrega a un invitado a la lista (puede ser empleado o ext)
+        listaInvitados.add(p); // Agrega a un invitado a la lista (puede ser empleado o ext)
     }
     //lo siguiente es hacer de listaAsistentes como una lista de listas usando la clase Asistencia
     public void registroAsistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {

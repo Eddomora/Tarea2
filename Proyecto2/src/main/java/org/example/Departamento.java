@@ -31,4 +31,12 @@ public class Departamento implements Invitar{
             Reunion.listaInvitados.add(e);
         }
     }
+
+    @Override
+    public void invitar(Reunion r) {
+        for(Empleado e: empleados){
+            Reunion.listaInvitados.add(e);
+        }
+
+    }
 }
