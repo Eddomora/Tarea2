@@ -6,6 +6,6 @@ public class Invitacion {
     private Instant hora;
 
     public Invitacion(){
-        hora = Instant.now();
+        this.hora = Instant.now();
     }
 }

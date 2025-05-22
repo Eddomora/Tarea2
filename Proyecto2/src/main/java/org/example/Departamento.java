@@ -25,18 +25,10 @@ public class Departamento implements Invitar{
         return new ArrayList<>(empleados);
     }
 
-    @Override
-    public void invitar() {
-        for(Empleado e: empleados){
-            Reunion.listaInvitados.add(e);
-        }
-    }
+
+
 
     @Override
     public void invitar(Reunion r) {
-        for(Empleado e: empleados){
-            Reunion.listaInvitados.add(e);
-        }
-
     }
 }

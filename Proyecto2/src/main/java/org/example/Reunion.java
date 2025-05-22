@@ -33,6 +33,14 @@ public abstract class Reunion {
     public void agregarInvitado(Persona p) {
         listaInvitados.add(p); // Agrega a un invitado a la lista (puede ser empleado o ext)
     }
+    public void marcarAsistencia(Persona p){
+        Instant ahora = Instant.now();
+        Duration tolerancia = Duration.ofMinutes(1);
+        Asistencia a = new Asistencia(p, EstadoAsistencia.PRESENTE, Instant.now());
+        if (ahora.isAfter(horaPrevista.plus(tolerancia))){
+            a.setEstado(EstadoAsistencia.TARDE);
+        }
+    }
     //lo siguiente es hacer de listaAsistentes como una lista de listas usando la clase Asistencia
     public void registroAsistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
         listaAsistentes.add(new Asistencia(persona, estado, horaLlegada));
@@ -86,8 +94,7 @@ public abstract class Reunion {
     }   //...nos va a entregar el numero total de invitados, no de asistentes.
 
     public float obtenerPorcentajeAsistencias(){
-        float porcentaje = obtenerTotalAsistencias() / listaInvitados.size() * 100;
-        return porcentaje;
+        return (float) obtenerTotalAsistencias() / listaInvitados.size() * 100;
     }
 
     public float calcularTiempoReal(){
