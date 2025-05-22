@@ -8,6 +8,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         Empleado e = new Empleado("1", "Perez Silva", "José", "jperez@udec.cl");
+        Empleado e2 = new Empleado("2", "Prieto Soto", "Juan", "jprieto@udec.cl");
 
         Departamento d = new Departamento("CFM");
         d.agregarEmpleado(e);
@@ -23,9 +24,8 @@ public class Main {
 
         Duration duracion = Duration.ofHours(1).plusMinutes(30);
 
-        ReunionPresencial r = new ReunionPresencial(fecha, horaPresencial, duracion, "Auditorio CFM");
+        ReunionPresencial r = new ReunionPresencial(e2, tipoReunion.TECNICA, fecha, horaPresencial, duracion, "Auditorio CFM");
 
         d.invitar();
-
     }
 }
