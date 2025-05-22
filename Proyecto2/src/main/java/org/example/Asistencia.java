@@ -19,7 +19,7 @@ public class Asistencia {
     //este toString no se si va aca o en persona
     @Override
     public String toString() {
-        return persona.getNombre() +" "+ persona.getApellidos() + " (" + estado + ")";
+        return persona.getNombre() +" "+ persona.getApellidos() + " (" + estado +", " + persona.getCorreo() + ")";
     }
 
     public Persona getPersona() {
