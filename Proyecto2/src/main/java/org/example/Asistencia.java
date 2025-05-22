@@ -16,6 +16,12 @@ public class Asistencia {
         this.horaLlegada = horaLlegada;
     }
 
+    //este toString no se si va aca o en persona
+    @Override
+    public String toString() {
+        return persona.getNombre() +" "+ persona.getApellidos() + " (" + estado + ")";
+    }
+
     public Persona getPersona() {
         return persona;
     }
