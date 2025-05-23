@@ -17,8 +17,8 @@ public abstract class Reunion {
     private Instant horaInicio;
     private Instant horaFinal;
 
-    private List listaInvitados;
-    private List listaAsistentes;
+    private List<Persona> listaInvitados;
+    private List<Asistencia> listaAsistentes;
 
     public Nota note = new Nota();
 
@@ -66,7 +66,7 @@ public abstract class Reunion {
     public List<Asistencia> obtenerAsistencias() {
         List<Asistencia> presentes = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
-            Asistencia a = (Asistencia) listaAsistentes.get(i); //no entendi porque intellij me aconsejó el casting pero asi no marca error almenos
+            Asistencia a = listaAsistentes.get(i);
             if (a.getEstado() == EstadoAsistencia.PRESENTE || a.getEstado() == EstadoAsistencia.TARDE) {
                 presentes.add(a);
             }
@@ -92,7 +92,7 @@ public abstract class Reunion {
     public List<Asistencia> obtenerRetrasos(){
         List<Asistencia> atrasos = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
-            Asistencia a = (Asistencia) listaAsistentes.get(i);
+            Asistencia a = listaAsistentes.get(i);
             if (a.getEstado() == EstadoAsistencia.TARDE) {
                 atrasos.add(a);
             }
