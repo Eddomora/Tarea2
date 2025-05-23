@@ -18,6 +18,8 @@ public abstract class Reunion {
     private List listaInvitados;
     private List listaAsistentes;
 
+    public Nota note = new Nota();
+
 
     public Reunion(Empleado organizador, TipoReunion tipoReu,Date fecha, Instant horaPrevista, Duration duracionPrevista){
         this.organizador = organizador;
@@ -28,6 +30,8 @@ public abstract class Reunion {
 
         this.listaAsistentes = new ArrayList<Asistencia>();
         this.listaInvitados = new ArrayList<>();
+
+        note.crearArchivo();
     }
     public void agregarInvitado(Persona p) {
         listaInvitados.add(p);
@@ -111,21 +115,24 @@ public abstract class Reunion {
 
     public void finalizar(String tipoReunion, String en){
         this.horaFinal = Instant.now();
-        Nota note = new Nota();
-        note.crearArchivo();
+        String temporal = note.getContenido();
+        note.setContenido("");
+
         note.agregarContenido(tipoReunion);
         note.agregarContenido("Organizada por " + organizador.getNombre()+ " " + organizador.getApellidos());
         note.agregarContenido("Fecha de realizacion " + fecha + " en" + en );
         note.agregarContenido("La reunion fue enfocada a "+ tipoReu);
         note.agregarContenido("La reunion inicio a las " + horaInicio + " y finalizo a las " + horaFinal);
-        note.agregarContenido("La duracion de la reunion fue de " + calcularTiempoReal() + " minutos");
+        note.agregarContenido("La duracion prevista para la reunion era de " + duracionPrevista + " minutos.");
+        note.agregarContenido("La duracion real de la reunion fue de " + calcularTiempoReal() + " minutos." );
         note.agregarContenido("Los detalles sobre la participacion a la reunion se desglosa de la siguiente manera.");
         note.agregarContenido("    El porcentaje es de " + obtenerPorcentajeAsistencias() + "%");
         note.agregarContenido("    La cantidad de personas que asistieron es de " + obtenerTotalAsistencias());
         note.agregarContenido("    Las personas que asistieron son: " + listaAString(obtenerAsistencias()));
         note.agregarContenido("    Las personas que faltaron son: " +  listaAString(obtenerAusencias()));
         note.agregarContenido("    Las personas que llegaron tarde son: " +  listaAString(obtenerRetrasos()));
-
+        note.agregarContenido("Las notas dentro de la reunion fueron las siguientes.");
+        note.agregarContenido(temporal);
 
         note.generarInforme();
 
