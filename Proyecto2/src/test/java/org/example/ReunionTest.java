@@ -20,7 +20,7 @@ class ReunionTest {
 
         Empleado e1 = new Empleado("1", "Perez Silva", "José", "jperez@udec.cl");
         Empleado e2 = new Empleado("2", "Prieto Soto", "Juan", "jprieto@udec.cl");
-        Externo p = new Externo( "Soliz Arriagada", "Carla", "csoliz@udec.cl");
+        InvitadoExterno p = new InvitadoExterno( "Soliz Arriagada", "Carla", "csoliz@udec.cl");
 
         Departamento d = new Departamento("CFM");
         d.agregarEmpleado(e1);
