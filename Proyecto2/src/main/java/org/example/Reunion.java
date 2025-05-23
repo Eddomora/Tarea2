@@ -5,7 +5,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Clase abstracta que representa una reunión y gestiona sus participantes, asistencia y registro.
+ */
 public abstract class Reunion {
     private Empleado organizador;
     private TipoReunion tipoReu;
@@ -33,9 +35,14 @@ public abstract class Reunion {
 
         note.crearArchivo();
     }
+    /**
+     * Agrega un invitado a la reunión.
+     * @param p Persona a invitar
+     */
     public void agregarInvitado(Persona p) {
         listaInvitados.add(p);
     }
+
     public void marcarAsistencia(Persona p){
         Instant ahora = Instant.now();
         Duration tolerancia = Duration.ofMinutes(1);
@@ -44,9 +51,18 @@ public abstract class Reunion {
             a.setEstado(EstadoAsistencia.TARDE);
         }
     }
+    /**
+     * Registra la asistencia de una persona con estado y hora de llegada.
+     * @param persona Asistente
+     * @param estado Estado de asistencia (PRESENTE, AUSENTE, TARDE)
+     * @param horaLlegada Hora de llegada
+     */
     public void registroAsistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
         listaAsistentes.add(new Asistencia(persona, estado, horaLlegada));
     }
+    /**
+     * @return Lista de asistencias (presentes y tardes)
+     */
     public List<Asistencia> obtenerAsistencias() {
         List<Asistencia> presentes = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
@@ -57,7 +73,9 @@ public abstract class Reunion {
         }
         return presentes;
     }
-    
+    /**
+     * @return Lista de ausencias
+     */
     public List<Asistencia> obtenerAusencias(){
         List<Asistencia> ausentes = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
@@ -68,7 +86,9 @@ public abstract class Reunion {
         }
         return ausentes;
     }
-    //same
+    /**
+     * @return Lista de personas que llegaron tarde
+     */
     public List<Asistencia> obtenerRetrasos(){
         List<Asistencia> atrasos = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
@@ -79,7 +99,12 @@ public abstract class Reunion {
         }
         return atrasos;
     }
-
+    /**
+     * Convierte una lista de asistencias en una cadena de texto.
+     * @param list Lista de objetos Asistencia a convertir
+     * @return String formateado con los elementos separados por comas
+     * @throws NullPointerException si la lista proporcionada es null
+     */
     public String listaAString(List<Asistencia> list){
         StringBuilder listado = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
@@ -93,12 +118,15 @@ public abstract class Reunion {
         }
         return listado.toString();
     }
-
-
+    /**
+     * @return Numero total de asistentes a la reunión
+     */
     public int obtenerTotalAsistencias() {
         return obtenerAsistencias().size();
     }
-
+    /**
+     * @return Porcentaje de asistencia de la reunión
+     */
     public float obtenerPorcentajeAsistencias(){
         return (float) obtenerTotalAsistencias() / listaInvitados.size() * 100;
     }
@@ -108,11 +136,19 @@ public abstract class Reunion {
         float t = d.toMinutes();
         return t;
     }
-
+    /**
+     * Inicia la reunión registrando la hora actual.
+     */
     public void iniciar(){
         this.horaInicio = Instant.now();
     }
-
+    /**
+     * Finaliza la reunión registrando la hora actual.
+     * Genera un informe detallado.
+     * @param tipoReunion Descripción textual del tipo de reunión
+     * @param en lugar físico donde se realizó la reunión
+     * @throws RuntimeException si ocurre un error al escribir el archivo
+     */
     public void finalizar(String tipoReunion, String en){
         this.horaFinal = Instant.now();
         String temporal = note.getContenido();
