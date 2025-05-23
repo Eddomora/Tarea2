@@ -1,6 +1,8 @@
 package org.example;
 
 import java.time.Instant;
+import java.time.LocalTime;
+
 /**
  * Representa el registro de asistencia de una persona.
  * Incluye información sobre la persona, su estado de asistencia y la hora de llegada.
@@ -8,13 +10,13 @@ import java.time.Instant;
 public class Asistencia {
     private Persona persona;
     private EstadoAsistencia estado;
-    private Instant horaLlegada;
+    private LocalTime horaLlegada;
     /**
      * @param persona La persona asociada a esta asistencia.
      * @param estado El estado de la asistencia ("PRESENTE", "AUSENTE" o "TARDE")
      * @param horaLlegada La hora de llegada registrada.
      */
-    public Asistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
+    public Asistencia(Persona persona, EstadoAsistencia estado, LocalTime horaLlegada) {
         this.persona = persona;
         this.estado = estado;
         this.horaLlegada = horaLlegada;
@@ -27,7 +29,7 @@ public class Asistencia {
      */
     @Override
     public String toString() {
-        return persona.getNombre() +" "+ persona.getApellidos() + " (" + estado +", " + persona.getCorreo() + ")";
+        return persona.getNombre() +" "+ persona.getApellidos() + " (" + getHoraLlegada() +" "+ getEstado() + ", " + persona.getCorreo() + ")";
     }
 
     public Persona getPersona() {
@@ -36,7 +38,7 @@ public class Asistencia {
     public EstadoAsistencia getEstado() {
         return estado;
     }
-    public Instant getHoraLlegada() {
+    public LocalTime getHoraLlegada() {
         return horaLlegada;
     }
 
