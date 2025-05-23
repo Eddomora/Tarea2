@@ -34,7 +34,6 @@ public abstract class Reunion {
         this.listaAsistentes = new ArrayList<Asistencia>();
         this.listaInvitados = new ArrayList<>();
 
-        note.crearArchivo();
     }
     /**
      * Agrega un invitado a la reunión.
@@ -138,10 +137,11 @@ public abstract class Reunion {
         return t;
     }
     /**
-     * Inicia la reunión registrando la hora actual.
+     * Inicia la reunión registrando la hora actual, y crea la nota de la reunion
      */
     public void iniciar(){
         this.horaInicio = Instant.now();
+        note.crearArchivo();
     }
     /**
      * Finaliza la reunión registrando la hora actual.
