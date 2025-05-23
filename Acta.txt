@@ -1,0 +1,12 @@
+Reunion Presencial
+Organizada por Juan Prieto Soto
+Fecha de realizacion Thu May 22 14:42:00 GMT-04:00 2025 en la sala Auditorio CFM
+La reunion fue enfocada a TECNICA
+La reunion inicio a las 2025-05-22T18:42:00.818675400Z y finalizo a las 2025-05-22T18:42:00.818675400Z
+La duracion de la reunion fue de 0.0 minutos
+Los detalles sobre la participacion a la reunion se desglosa de la siguiente manera.
+    El porcentaje es de 100.0%
+    La cantidad de personas que asistieron es de 2
+    Las personas que asistieron son: José Perez Silva (PRESENTE), Juan Prieto Soto (TARDE).
+    Las personas que faltaron son: 
+    Las personas que llegaron tarde son: Juan Prieto Soto (TARDE).
