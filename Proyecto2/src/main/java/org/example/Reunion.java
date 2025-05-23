@@ -2,6 +2,7 @@ package org.example;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +47,7 @@ public abstract class Reunion {
     public void marcarAsistencia(Persona p){
         Instant ahora = Instant.now();
         Duration tolerancia = Duration.ofMinutes(1);
-        Asistencia a = new Asistencia(p, EstadoAsistencia.PRESENTE, Instant.now());
+        Asistencia a = new Asistencia(p, EstadoAsistencia.PRESENTE, LocalTime.now().withNano(0));
         if (ahora.isAfter(horaPrevista.plus(tolerancia))){
             a.setEstado(EstadoAsistencia.TARDE);
         }
@@ -57,7 +58,7 @@ public abstract class Reunion {
      * @param estado Estado de asistencia (PRESENTE, AUSENTE, TARDE)
      * @param horaLlegada Hora de llegada
      */
-    public void registroAsistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
+    public void registroAsistencia(Persona persona, EstadoAsistencia estado, LocalTime horaLlegada) {
         listaAsistentes.add(new Asistencia(persona, estado, horaLlegada));
     }
     /**

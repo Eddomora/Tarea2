@@ -29,10 +29,10 @@ public class Main {
         r.agregarInvitado(e);
         r.agregarInvitado(e2);
         d.invitar(r);
-        r.registroAsistencia(e,EstadoAsistencia.PRESENTE,Instant.now());
+        r.registroAsistencia(e,EstadoAsistencia.PRESENTE,LocalTime.now().withNano(0));
 
         r.iniciar();
-        r.registroAsistencia(e2,EstadoAsistencia.TARDE,Instant.now());
+        r.registroAsistencia(e2,EstadoAsistencia.TARDE,LocalTime.now().withNano(0));
         r.note.agregarContenido("Nota sobre acontecimiento en Reunión (1)" + "(" + LocalTime.now().withNano(0) + ")");
         try {
             Thread.sleep(1000);
