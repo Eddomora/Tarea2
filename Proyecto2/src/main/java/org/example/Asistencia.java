@@ -1,22 +1,30 @@
 package org.example;
 
 import java.time.Instant;
-
-//En esta clase se puede registrar la asistencia de las personas invitadas a la reu
-//el estado está dado por el enum EstadoAsistencia que tiene las 3 opciones posibles
-
+/**
+ * Representa el registro de asistencia de una persona.
+ * Incluye información sobre la persona, su estado de asistencia y la hora de llegada.
+ */
 public class Asistencia {
     private Persona persona;
     private EstadoAsistencia estado;
     private Instant horaLlegada;
-
+    /**
+     * @param persona La persona asociada a esta asistencia.
+     * @param estado El estado de la asistencia ("PRESENTE", "AUSENTE" o "TARDE")
+     * @param horaLlegada La hora de llegada registrada.
+     */
     public Asistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
         this.persona = persona;
         this.estado = estado;
         this.horaLlegada = horaLlegada;
     }
-
-    //este toString no se si va aca o en persona
+    /**
+     * Genera una representación en formato String de la asistencia.
+     * El formato es: "{Nombre} {Apellidos} ({Estado}, {Correo})"
+     *
+     * @return Una cadena que resume la información de la asistencia.
+     */
     @Override
     public String toString() {
         return persona.getNombre() +" "+ persona.getApellidos() + " (" + estado +", " + persona.getCorreo() + ")";
@@ -36,5 +44,3 @@ public class Asistencia {
         this.estado = estado;
     }
 }
-//asi luego en la clase Reunion podemos registrar facilmente quienes llegaron tarde
-// o quienes no llegaron (ausentes).
