@@ -3,7 +3,10 @@ package org.example;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
-
+/**
+ * Representa una Reunión virtual expandiendo las propiedades de una Reunión.
+ * Agrega un enlace para realizar la reunion de forma virtual.
+ */
 public class ReunionVirtual extends Reunion {
     private String enlace;
 

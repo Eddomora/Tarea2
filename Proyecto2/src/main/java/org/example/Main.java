@@ -14,12 +14,12 @@ public class Main {
         d.agregarEmpleado(e);
 
         Calendar cal = Calendar.getInstance();
-        cal.set(2025, Calendar.MAY, 22); // Recuerda: MAY = 4 (entendi la referencia)
+        cal.set(2025, Calendar.MAY, 22);
         Date fecha = cal.getTime();
 
         LocalDate fechaBase = LocalDate.of(2025, 5, 22);
         LocalTime horaBase = LocalTime.of(20, 0);
-        ZoneId zona = ZoneId.systemDefault(); // o usar una zona fija si necesitas consistencia
+        ZoneId zona = ZoneId.systemDefault();
         Instant horaPresencial = LocalDateTime.of(fechaBase, horaBase).atZone(zona).toInstant();
 
         Duration duracion = Duration.ofHours(1).plusMinutes(30);
@@ -33,13 +33,13 @@ public class Main {
 
         r.iniciar();
         r.registroAsistencia(e2,EstadoAsistencia.TARDE,Instant.now());
-        r.note.agregarContenido("Pedrito tuvo incoveniencias al llegar a la sala" + "(" + LocalTime.now().withNano(0) + ")");
+        r.note.agregarContenido("Nota sobre acontecimiento en Reunión (1)" + "(" + LocalTime.now().withNano(0) + ")");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
-        r.note.agregarContenido("Pedrito tuvo incoveniencias y tuvo que regresar al baño" + "(" + LocalTime.now().withNano(0) + ")");
+        r.note.agregarContenido("Nota sobre acontecimiento en Reunión (2)" + "(" + LocalTime.now().withNano(0) + ")");
         r.finaliza();
     }
 }
