@@ -30,7 +30,7 @@ public abstract class Reunion {
         this.listaInvitados = new ArrayList<>();
     }
     public void agregarInvitado(Persona p) {
-        listaInvitados.add(p); // Agrega a un invitado a la lista (puede ser empleado o ext)
+        listaInvitados.add(p);
     }
     public void marcarAsistencia(Persona p){
         Instant ahora = Instant.now();
@@ -40,12 +40,9 @@ public abstract class Reunion {
             a.setEstado(EstadoAsistencia.TARDE);
         }
     }
-    //lo siguiente es hacer de listaAsistentes como una lista de listas usando la clase Asistencia
     public void registroAsistencia(Persona persona, EstadoAsistencia estado, Instant horaLlegada) {
         listaAsistentes.add(new Asistencia(persona, estado, horaLlegada));
     }
-    //obtenerAsistenica crea una lista "vacía" llamada presentes. Luego recorre la lista de invitados y aquellos que llegaron
-    //ya sea puntual o tarde son agregados a "presentes".
     public List<Asistencia> obtenerAsistencias() {
         List<Asistencia> presentes = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
@@ -56,8 +53,7 @@ public abstract class Reunion {
         }
         return presentes;
     }
-
-    //para obtenerAusencias se usa la misma mecanica que en obtenerAsistencias.
+    
     public List<Asistencia> obtenerAusencias(){
         List<Asistencia> ausentes = new ArrayList<>();
         for (int i = 0; i < listaAsistentes.size(); i++) {
