@@ -12,9 +12,12 @@ public abstract class Persona {
         this.correo = correo;
     }
 
+    protected Persona() {}
+
     public String getApellidos() {
         return apellidos;
     }
+
     public String getNombre() {
         return nombre;
     }
