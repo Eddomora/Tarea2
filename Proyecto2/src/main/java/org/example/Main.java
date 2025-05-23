@@ -33,6 +33,13 @@ public class Main {
 
         r.iniciar();
         r.registroAsistencia(e2,EstadoAsistencia.TARDE,Instant.now());
+        r.note.agregarContenido("Pedrito tuvo incoveniencias al llegar a la sala" + "(" + LocalTime.now().withNano(0) + ")");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
+        r.note.agregarContenido("Pedrito tuvo incoveniencias y tuvo que regresar al baño" + "(" + LocalTime.now().withNano(0) + ")");
         r.finaliza();
     }
 }

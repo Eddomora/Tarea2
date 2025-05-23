@@ -35,6 +35,13 @@ public class Nota {
             throw new RuntimeException(e);
         }
         System.out.println("Contenido escrito correctamente.");
+    }
 
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String str){
+        contenido = str;
     }
 }
