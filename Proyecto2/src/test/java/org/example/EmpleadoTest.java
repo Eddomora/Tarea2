@@ -18,8 +18,4 @@ class EmpleadoTest {
 
         assertEquals("carlos2025@inf.udec.cl", empleado.getCorreo());
     }
-    @Test
-    void testDepartamentoEsNullPorDefecto() {
-        Empleado empleado = new Empleado("789", "Gómez", "Ana", "ana@correo.com");
-    }
 }
